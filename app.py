@@ -23,11 +23,11 @@ def main():
 
     # upload file
     pdf = st.file_uploader("Upload your PDF", type="pdf")
+    text = ""
 
     # extract the text
     if pdf is not None:
         pdf_reader = PdfReader(pdf)
-        text = ""
         for page in pdf_reader.pages:
             text += page.extract_text()
 
