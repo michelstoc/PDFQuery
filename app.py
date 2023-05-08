@@ -1,5 +1,5 @@
 """
-This module provides utility for qwerying a PDF in natural language
+This module provides utility for qwerying a PDF in natural language.
 """
 
 # python -m pip install --upgrade pip
