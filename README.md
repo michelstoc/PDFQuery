@@ -1,2 +1,2 @@
-# PDFQuery
-Query a PDF in Human Language
+# SiteGptQuery
+Query a WebSite in Human Language
