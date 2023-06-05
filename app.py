@@ -65,6 +65,8 @@ def main():
                     print(cb)
                     
                     st.write(response)
+    else :
+        st.write("Désolé, le code d'utilisation que vous avez entré n'est pas valide. Veuillez réessayer.")
     
 
 if __name__ == '__main__':
