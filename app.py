@@ -1,6 +1,7 @@
 # python -m pip install --upgrade pip
 # pip install langchain pypdf2 python-dotenv streamlit openai tiktoken faiss-cpu
 
+import os
 from dotenv import load_dotenv
 import streamlit as st
 from PyPDF2 import PdfReader
@@ -14,6 +15,8 @@ from langchain.callbacks import get_openai_callback
 
 def main():
     load_dotenv()
+    password=os.getenv('PASSWORD')
+    
     st.set_page_config(page_title="PDF Query")
     st.header("Travailler sur le contenu d'un PDF")
     
@@ -27,7 +30,7 @@ def main():
     # Ask for usage code
     usage_code = st.text_input("Entrez votre code d'utilisation:")
     
-    if usage_code == 'Koekelberg1081':
+    if usage_code == password:
     
         # upload file
         pdf = st.file_uploader("Chargez votre PDF", type="pdf")
