@@ -17,10 +17,18 @@ def main():
     st.set_page_config(page_title="PDF Query")
     st.header("Posez des questions sur le contenu d'un PDF")
     
+    # Explanation paragraph
+    st.write("""
+    Ce programme vous permet de poser des questions sur le contenu d'un fichier PDF. 
+    Pour commencer, veuillez entrer le code d'utilisation. Si le code est valide, vous pourrez charger votre PDF 
+    et poser des questions concernant son contenu. Le programme utilise l'API OpenAI pour effectuer une recherche de 
+    similarité dans le texte extrait du PDF chargé, et fournit une réponse en fonction de la question posée.
+    """)    
+    
     # Ask for usage code
     usage_code = st.text_input("Entrez votre code d'utilisation:")
     
-    if usage_code == 'xyz':
+    if usage_code == 'Koekelberg1081':
     
         # upload file
         pdf = st.file_uploader("Chargez votre PDF", type="pdf")
