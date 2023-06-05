@@ -60,11 +60,12 @@ def main():
                 
                 llm = OpenAI()
                 chain = load_qa_chain(llm, chain_type="stuff")
-                with get_openai_callback() as cb:
-                    response = chain.run(input_documents=docs, question=user_question)
-                    print(cb)
-                    
-                    st.write(response)
+                with st.spinner('Recherche en cours...'):
+                    with get_openai_callback() as cb:
+                        response = chain.run(input_documents=docs, question=user_question)
+                        print(cb)
+                        
+                        st.write(response)
     else :
         st.write("Désolé, le code d'utilisation que vous avez entré n'est pas valide. Veuillez réessayer.")
     
