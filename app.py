@@ -35,24 +35,25 @@ def main():
         
         # extract the text
         if pdf is not None:
-            pdf_reader = PdfReader(pdf)
-            text = ""
-            for page in pdf_reader.pages:
-                text += page.extract_text()
+            with st.spinner('Entrainement sur le PDF patientez quelques instant...'):
+                pdf_reader = PdfReader(pdf)
+                text = ""
+                for page in pdf_reader.pages:
+                    text += page.extract_text()
+                    
+                # split into chunks
+                text_splitter = CharacterTextSplitter(
+                    separator="\n",
+                    chunk_size=1000,
+                    chunk_overlap=200,
+                    length_function=len
+                )
+                chunks = text_splitter.split_text(text)
                 
-            # split into chunks
-            text_splitter = CharacterTextSplitter(
-                separator="\n",
-                chunk_size=1000,
-                chunk_overlap=200,
-                length_function=len
-            )
-            chunks = text_splitter.split_text(text)
-            
-            # create embeddings
-            embeddings = OpenAIEmbeddings()
-            knowledge_base = FAISS.from_texts(chunks, embeddings)
-            
+                # create embeddings
+                embeddings = OpenAIEmbeddings()
+                knowledge_base = FAISS.from_texts(chunks, embeddings)
+                
             # show user input
             user_question = st.text_input("Posez votre question:")
             if user_question:
